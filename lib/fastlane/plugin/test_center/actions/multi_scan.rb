@@ -63,6 +63,11 @@ module Fastlane
             File.absolute_path(relative_filepath)
           end
         end
+        if scan_options[:result_bundle]
+          report_files += Dir.glob("#{scan_options[:output_directory]}/**/*.test_result").map do |relative_test_result_bundle_filepath|
+            File.absolute_path(relative_test_result_bundle_filepath)
+          end
+        end
         {
           result: tests_passed,
           total_tests: passing_testcount + failed_tests.size,
