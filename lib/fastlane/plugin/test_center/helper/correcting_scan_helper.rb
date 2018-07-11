@@ -115,7 +115,7 @@ module TestCenter
       end
 
       def collate_test_result_bundles(output_directory, reportnamer)
-        test_result_bundlepaths = Dir.glob("#{output_directory}/*.test_result").map do |relative_test_result_bundle_filepath|
+        test_result_bundlepaths = Dir.glob("#{output_directory}/#{@scan_options[:scheme]}*.test_result").map do |relative_test_result_bundle_filepath|
           File.absolute_path(relative_test_result_bundle_filepath)
         end
         if test_result_bundlepaths.size > 1
